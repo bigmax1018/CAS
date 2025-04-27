@@ -1,0 +1,251 @@
+{
+  "nodes": {
+    "undefined": {
+      "name": "undefined",
+      "type": "lib",
+      "data": {
+        "root": "libs/shared",
+        "projectType": "library",
+        "targets": {
+          "typecheck": {
+            "dependsOn": [
+              "build",
+              "^typecheck"
+            ],
+            "options": {
+              "cwd": "libs/shared",
+              "command": "tsc --build --emitDeclarationOnly"
+            },
+            "cache": true,
+            "inputs": [
+              "production",
+              {
+                "dependentTasksOutputFiles": "**/*.d.ts"
+              },
+              {
+                "externalDependencies": [
+                  "typescript"
+                ]
+              }
+            ],
+            "outputs": [],
+            "syncGenerators": [
+              "@nx/js:typescript-sync"
+            ],
+            "metadata": {
+              "technologies": [
+                "typescript"
+              ],
+              "description": "Runs type-checking for the project.",
+              "help": {
+                "command": "npx tsc --build --help",
+                "example": {
+                  "args": [
+                    "--force"
+                  ]
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          },
+          "build": {
+            "dependsOn": [
+              "^build"
+            ],
+            "options": {
+              "cwd": "libs/shared",
+              "command": "tsc --build tsconfig.lib.json"
+            },
+            "cache": true,
+            "inputs": [
+              "{projectRoot}/package.json",
+              "{projectRoot}/tsconfig.lib.json",
+              "{projectRoot}/src/**/*.ts",
+              "!{projectRoot}/jest.config.ts",
+              "!{projectRoot}/src/**/*.spec.ts",
+              "!{projectRoot}/src/**/*.test.ts",
+              "^production",
+              {
+                "externalDependencies": [
+                  "typescript"
+                ]
+              }
+            ],
+            "outputs": [
+              "{projectRoot}/dist/**/*.d.ts",
+              "{projectRoot}/dist/tsconfig.lib.tsbuildinfo"
+            ],
+            "syncGenerators": [
+              "@nx/js:typescript-sync"
+            ],
+            "metadata": {
+              "technologies": [
+                "typescript"
+              ],
+              "description": "Builds the project with `tsc`.",
+              "help": {
+                "command": "npx tsc --build --help",
+                "example": {
+                  "args": [
+                    "--force"
+                  ]
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          },
+          "build-deps": {
+            "dependsOn": [
+              "^build"
+            ],
+            "configurations": {},
+            "options": {},
+            "parallelism": true,
+            "executor": "nx:noop"
+          },
+          "watch-deps": {
+            "dependsOn": [
+              "build-deps"
+            ],
+            "executor": "nx:run-commands",
+            "options": {
+              "command": "npx nx watch --projects @cas-repo/shared --includeDependentProjects -- npx nx build-deps @cas-repo/shared"
+            },
+            "configurations": {},
+            "parallelism": true
+          }
+        },
+        "implicitDependencies": [],
+        "tags": []
+      }
+    }
+  },
+  "externalNodes": {},
+  "dependencies": {
+    "undefined": []
+  },
+  "version": "6.0",
+  "errors": [
+    {
+      "stack": " - apps/server/eslint.config.mjs: Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'F:\\My_Work\\Crypto_treate\\CAS\\cas-repo\\apps\\eslint.config.mjs' imported from F:\\My_Work\\Crypto_treate\\CAS\\cas-repo\\apps\\server\\eslint.config.mjs\n    at finalizeResolution (node:internal/modules/esm/resolve:275:11)\n    at moduleResolve (node:internal/modules/esm/resolve:860:10)\n    at defaultResolve (node:internal/modules/esm/resolve:984:11)\n    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:685:12)\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:634:25)\n    at ModuleLoader.resolve (node:internal/modules/esm/loader:617:38)\n    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:273:38)\n    at ModuleJob._link (node:internal/modules/esm/module_job:135:49)\n - apps/server-e2e/eslint.config.mjs: Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'F:\\My_Work\\Crypto_treate\\CAS\\cas-repo\\apps\\eslint.config.mjs' imported from F:\\My_Work\\Crypto_treate\\CAS\\cas-repo\\apps\\server-e2e\\eslint.config.mjs\n    at finalizeResolution (node:internal/modules/esm/resolve:275:11)\n    at moduleResolve (node:internal/modules/esm/resolve:860:10)\n    at defaultResolve (node:internal/modules/esm/resolve:984:11)\n    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:685:12)\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:634:25)\n    at ModuleLoader.resolve (node:internal/modules/esm/loader:617:38)\n    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:273:38)\n    at ModuleJob._link (node:internal/modules/esm/module_job:135:49)\n - apps/web-vue/eslint.config.mjs: Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'F:\\My_Work\\Crypto_treate\\CAS\\cas-repo\\apps\\eslint.config.mjs' imported from F:\\My_Work\\Crypto_treate\\CAS\\cas-repo\\apps\\web-vue\\eslint.config.mjs\n    at finalizeResolution (node:internal/modules/esm/resolve:275:11)\n    at moduleResolve (node:internal/modules/esm/resolve:860:10)\n    at defaultResolve (node:internal/modules/esm/resolve:984:11)\n    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:685:12)\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:634:25)\n    at ModuleLoader.resolve (node:internal/modules/esm/loader:617:38)\n    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:273:38)\n    at ModuleJob._link (node:internal/modules/esm/module_job:135:49)\n - apps/web-vue-e2e/eslint.config.mjs: Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'F:\\My_Work\\Crypto_treate\\CAS\\cas-repo\\apps\\eslint.config.mjs' imported from F:\\My_Work\\Crypto_treate\\CAS\\cas-repo\\apps\\web-vue-e2e\\eslint.config.mjs\n    at finalizeResolution (node:internal/modules/esm/resolve:275:11)\n    at moduleResolve (node:internal/modules/esm/resolve:860:10)\n    at defaultResolve (node:internal/modules/esm/resolve:984:11)\n    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:685:12)\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:634:25)\n    at ModuleLoader.resolve (node:internal/modules/esm/loader:617:38)\n    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:273:38)\n    at ModuleJob._link (node:internal/modules/esm/module_job:135:49)\n - libs/shared/eslint.config.mjs: Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'F:\\My_Work\\Crypto_treate\\CAS\\cas-repo\\libs\\eslint.config.mjs' imported from F:\\My_Work\\Crypto_treate\\CAS\\cas-repo\\libs\\shared\\eslint.config.mjs\n    at finalizeResolution (node:internal/modules/esm/resolve:275:11)\n    at moduleResolve (node:internal/modules/esm/resolve:860:10)\n    at defaultResolve (node:internal/modules/esm/resolve:984:11)\n    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:685:12)\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:634:25)\n    at ModuleLoader.resolve (node:internal/modules/esm/loader:617:38)\n    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:273:38)\n    at ModuleJob._link (node:internal/modules/esm/module_job:135:49)",
+      "message": "5 errors occurred while processing files for the @nx/eslint/plugin plugin (Defined at nx.json#plugins[3])\n.\n  - apps/server/eslint.config.mjs: Cannot find module 'F:\\My_Work\\Crypto_treate\\CAS\\cas-repo\\apps\\eslint.config.mjs' imported from F:\\My_Work\\Crypto_treate\\CAS\\cas-repo\\apps\\server\\eslint.config.mjs\n  - apps/server-e2e/eslint.config.mjs: Cannot find module 'F:\\My_Work\\Crypto_treate\\CAS\\cas-repo\\apps\\eslint.config.mjs' imported from F:\\My_Work\\Crypto_treate\\CAS\\cas-repo\\apps\\server-e2e\\eslint.config.mjs\n  - apps/web-vue/eslint.config.mjs: Cannot find module 'F:\\My_Work\\Crypto_treate\\CAS\\cas-repo\\apps\\eslint.config.mjs' imported from F:\\My_Work\\Crypto_treate\\CAS\\cas-repo\\apps\\web-vue\\eslint.config.mjs\n  - apps/web-vue-e2e/eslint.config.mjs: Cannot find module 'F:\\My_Work\\Crypto_treate\\CAS\\cas-repo\\apps\\eslint.config.mjs' imported from F:\\My_Work\\Crypto_treate\\CAS\\cas-repo\\apps\\web-vue-e2e\\eslint.config.mjs\n  - libs/shared/eslint.config.mjs: Cannot find module 'F:\\My_Work\\Crypto_treate\\CAS\\cas-repo\\libs\\eslint.config.mjs' imported from F:\\My_Work\\Crypto_treate\\CAS\\cas-repo\\libs\\shared\\eslint.config.mjs",
+      "errors": [
+        [
+          "apps/server/eslint.config.mjs",
+          {
+            "stack": "Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'F:\\My_Work\\Crypto_treate\\CAS\\cas-repo\\apps\\eslint.config.mjs' imported from F:\\My_Work\\Crypto_treate\\CAS\\cas-repo\\apps\\server\\eslint.config.mjs\n    at finalizeResolution (node:internal/modules/esm/resolve:275:11)\n    at moduleResolve (node:internal/modules/esm/resolve:860:10)\n    at defaultResolve (node:internal/modules/esm/resolve:984:11)\n    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:685:12)\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:634:25)\n    at ModuleLoader.resolve (node:internal/modules/esm/loader:617:38)\n    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:273:38)\n    at ModuleJob._link (node:internal/modules/esm/module_job:135:49)",
+            "code": "ERR_MODULE_NOT_FOUND",
+            "url": "file:///F:/My_Work/Crypto_treate/CAS/cas-repo/apps/eslint.config.mjs",
+            "message": "Cannot find module 'F:\\My_Work\\Crypto_treate\\CAS\\cas-repo\\apps\\eslint.config.mjs' imported from F:\\My_Work\\Crypto_treate\\CAS\\cas-repo\\apps\\server\\eslint.config.mjs"
+          }
+        ],
+        [
+          "apps/server-e2e/eslint.config.mjs",
+          {
+            "stack": "Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'F:\\My_Work\\Crypto_treate\\CAS\\cas-repo\\apps\\eslint.config.mjs' imported from F:\\My_Work\\Crypto_treate\\CAS\\cas-repo\\apps\\server-e2e\\eslint.config.mjs\n    at finalizeResolution (node:internal/modules/esm/resolve:275:11)\n    at moduleResolve (node:internal/modules/esm/resolve:860:10)\n    at defaultResolve (node:internal/modules/esm/resolve:984:11)\n    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:685:12)\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:634:25)\n    at ModuleLoader.resolve (node:internal/modules/esm/loader:617:38)\n    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:273:38)\n    at ModuleJob._link (node:internal/modules/esm/module_job:135:49)",
+            "code": "ERR_MODULE_NOT_FOUND",
+            "url": "file:///F:/My_Work/Crypto_treate/CAS/cas-repo/apps/eslint.config.mjs",
+            "message": "Cannot find module 'F:\\My_Work\\Crypto_treate\\CAS\\cas-repo\\apps\\eslint.config.mjs' imported from F:\\My_Work\\Crypto_treate\\CAS\\cas-repo\\apps\\server-e2e\\eslint.config.mjs"
+          }
+        ],
+        [
+          "apps/web-vue/eslint.config.mjs",
+          {
+            "stack": "Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'F:\\My_Work\\Crypto_treate\\CAS\\cas-repo\\apps\\eslint.config.mjs' imported from F:\\My_Work\\Crypto_treate\\CAS\\cas-repo\\apps\\web-vue\\eslint.config.mjs\n    at finalizeResolution (node:internal/modules/esm/resolve:275:11)\n    at moduleResolve (node:internal/modules/esm/resolve:860:10)\n    at defaultResolve (node:internal/modules/esm/resolve:984:11)\n    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:685:12)\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:634:25)\n    at ModuleLoader.resolve (node:internal/modules/esm/loader:617:38)\n    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:273:38)\n    at ModuleJob._link (node:internal/modules/esm/module_job:135:49)",
+            "code": "ERR_MODULE_NOT_FOUND",
+            "url": "file:///F:/My_Work/Crypto_treate/CAS/cas-repo/apps/eslint.config.mjs",
+            "message": "Cannot find module 'F:\\My_Work\\Crypto_treate\\CAS\\cas-repo\\apps\\eslint.config.mjs' imported from F:\\My_Work\\Crypto_treate\\CAS\\cas-repo\\apps\\web-vue\\eslint.config.mjs"
+          }
+        ],
+        [
+          "apps/web-vue-e2e/eslint.config.mjs",
+          {
+            "stack": "Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'F:\\My_Work\\Crypto_treate\\CAS\\cas-repo\\apps\\eslint.config.mjs' imported from F:\\My_Work\\Crypto_treate\\CAS\\cas-repo\\apps\\web-vue-e2e\\eslint.config.mjs\n    at finalizeResolution (node:internal/modules/esm/resolve:275:11)\n    at moduleResolve (node:internal/modules/esm/resolve:860:10)\n    at defaultResolve (node:internal/modules/esm/resolve:984:11)\n    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:685:12)\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:634:25)\n    at ModuleLoader.resolve (node:internal/modules/esm/loader:617:38)\n    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:273:38)\n    at ModuleJob._link (node:internal/modules/esm/module_job:135:49)",
+            "code": "ERR_MODULE_NOT_FOUND",
+            "url": "file:///F:/My_Work/Crypto_treate/CAS/cas-repo/apps/eslint.config.mjs",
+            "message": "Cannot find module 'F:\\My_Work\\Crypto_treate\\CAS\\cas-repo\\apps\\eslint.config.mjs' imported from F:\\My_Work\\Crypto_treate\\CAS\\cas-repo\\apps\\web-vue-e2e\\eslint.config.mjs"
+          }
+        ],
+        [
+          "libs/shared/eslint.config.mjs",
+          {
+            "stack": "Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'F:\\My_Work\\Crypto_treate\\CAS\\cas-repo\\libs\\eslint.config.mjs' imported from F:\\My_Work\\Crypto_treate\\CAS\\cas-repo\\libs\\shared\\eslint.config.mjs\n    at finalizeResolution (node:internal/modules/esm/resolve:275:11)\n    at moduleResolve (node:internal/modules/esm/resolve:860:10)\n    at defaultResolve (node:internal/modules/esm/resolve:984:11)\n    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:685:12)\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:634:25)\n    at ModuleLoader.resolve (node:internal/modules/esm/loader:617:38)\n    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:273:38)\n    at ModuleJob._link (node:internal/modules/esm/module_job:135:49)",
+            "code": "ERR_MODULE_NOT_FOUND",
+            "url": "file:///F:/My_Work/Crypto_treate/CAS/cas-repo/libs/eslint.config.mjs",
+            "message": "Cannot find module 'F:\\My_Work\\Crypto_treate\\CAS\\cas-repo\\libs\\eslint.config.mjs' imported from F:\\My_Work\\Crypto_treate\\CAS\\cas-repo\\libs\\shared\\eslint.config.mjs"
+          }
+        ]
+      ],
+      "partialResults": [
+        [
+          "eslint.config.mjs",
+          {
+            "projects": {
+              "apps/mobile": {
+                "targets": {
+                  "lint": {
+                    "command": "eslint .",
+                    "cache": true,
+                    "options": {
+                      "cwd": "apps/mobile",
+                      "env": {
+                        "ESLINT_USE_FLAT_CONFIG": "true"
+                      }
+                    },
+                    "inputs": [
+                      "default",
+                      "^default",
+                      "{workspaceRoot}/eslint.config.mjs",
+                      "{workspaceRoot}/tools/eslint-rules/**/*",
+                      {
+                        "externalDependencies": [
+                          "eslint"
+                        ]
+                      }
+                    ],
+                    "outputs": [
+                      "{options.outputFile}"
+                    ],
+                    "metadata": {
+                      "technologies": [
+                        "eslint"
+                      ],
+                      "description": "Runs ESLint on project",
+                      "help": {
+                        "command": "npx eslint --help",
+                        "example": {
+                          "options": {
+                            "max-warnings": 0
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      ],
+      "name": "AggregateCreateNodesError",
+      "pluginIndex": 3
+    },
+    {
+      "projectRoots": [
+        "apps/mobile",
+        "apps/server",
+        "apps/server-e2e",
+        "apps/web-vue",
+        "apps/web-vue-e2e",
+        "libs/shared"
+      ],
+      "projects": {},
+      "name": "ProjectsWithNoNameError"
+    }
+  ],
+  "computedAt": 1745717510388
+}

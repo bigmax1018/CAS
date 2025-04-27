@@ -1,0 +1,10 @@
+{
+  "name": "@cas-repo/web-vue-e2e",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "implicitDependencies": [
+      "@cas-repo/web-vue"
+    ]
+  }
+}

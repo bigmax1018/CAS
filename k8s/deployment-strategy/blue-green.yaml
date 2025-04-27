@@ -1,0 +1,58 @@
+# k8s/deployment-strategy/blue-green.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/canary: "true"
+    nginx.ingress.kubernetes.io/canary-weight: "0" # Start with 0% traffic to green
+spec:
+  rules:
+  - http:
+      paths:
+      - backend:
+          service:
+            name: blue-service
+            port: 
+              number: 3000
+        path: /
+        pathType: Prefix
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: green-service
+spec:
+  selector:
+    app: backend
+    track: green
+  ports:
+  - protocol: TCP
+    port: 3000
+
+# Deployment Script:
+
+# bash
+# #!/bin/bash
+# # blue-green-rollout.sh
+
+# # Deploy green
+# kubectl apply -f k8s/green-deployment.yaml
+
+# # Test green
+# kubectl port-forward svc/green-service 3001:3000 &
+# TEST_PID=$!
+# sleep 10
+# curl -I http://localhost:3001/health
+
+# # Shift traffic
+# for WEIGHT in 10 25 50 75 100; do
+#   kubectl annotate ingress app-ingress \
+#     nginx.ingress.kubernetes.io/canary-weight="${WEIGHT}" --overwrite
+#   sleep 300 # 5 min between increments
+# done
+
+# # Cleanup blue
+# kill $TEST_PID
+# kubectl delete -f k8s/blue-deployment.yaml

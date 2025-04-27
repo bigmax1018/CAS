@@ -1,0 +1,27 @@
+// server/prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql" // or "mysql", "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Add your models here (example for user)
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+}
+
+model MarketData {
+  id        String   @id @default(uuid())
+  pair      String
+  price     Float
+  volume    Float?
+  exchange  String?
+  timestamp DateTime @default(now())
+
+  @@map("market_data")
+}

@@ -1,0 +1,12 @@
+[NX v20.8.1 Daemon Server] - 2025-04-27T01:31:43.760Z - Started listening on: \\.\pipe\nx\C:\Users\Administrator\AppData\Local\Temp\77a4e151e7475de1fc90\d.sock
+[NX v20.8.1 Daemon Server] - 2025-04-27T01:31:43.763Z - [WATCHER]: Subscribed to changes within: F:\My_Work\Crypto_treate\CAS\cas-repo (native)
+[NX v20.8.1 Daemon Server] - 2025-04-27T01:31:43.781Z - Established a connection. Number of open connections: 1
+[NX v20.8.1 Daemon Server] - 2025-04-27T01:31:43.785Z - Closed a connection. Number of open connections: 0
+[NX v20.8.1 Daemon Server] - 2025-04-27T01:31:43.786Z - Established a connection. Number of open connections: 1
+[NX v20.8.1 Daemon Server] - 2025-04-27T01:31:43.791Z - [REQUEST]: Responding to the client. Shutdown initiated
+[NX v20.8.1 Daemon Server] - 2025-04-27T01:31:43.817Z - Done responding to the client Shutdown initiated
+[NX v20.8.1 Daemon Server] - 2025-04-27T01:31:43.818Z - Handled FORCE_SHUTDOWN. Handling time: 0. Response time: 27.
+[NX v20.8.1 Daemon Server] - 2025-04-27T01:31:43.818Z - Closed a connection. Number of open connections: 0
+[NX v20.8.1 Daemon Server] - 2025-04-27T01:31:43.819Z - [WATCHER]: Stopping the watcher for F:\My_Work\Crypto_treate\CAS\cas-repo (sources)
+[NX v20.8.1 Daemon Server] - 2025-04-27T01:31:43.819Z - [WATCHER]: Stopping the watcher for F:\My_Work\Crypto_treate\CAS\cas-repo (outputs)
+[NX v20.8.1 Daemon Server] - 2025-04-27T01:31:43.819Z - Server stopped because: "Request to shutdown"

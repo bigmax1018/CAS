@@ -1,0 +1,25 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compileOnSave": false,
+  "files": [],
+  "references": [
+    {
+      "path": "./mobile"
+    },
+    {
+      "path": "./web-vue-e2e"
+    },
+    {
+      "path": "./web-vue"
+    },
+    {
+      "path": "./server-e2e"
+    },
+    {
+      "path": "./server"
+    },
+    {
+      "path": "./shared"
+    }
+  ]
+}

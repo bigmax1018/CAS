@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/lib/shared.ts"],"sourcesContent":["export function shared(): string {\n  return 'shared';\n}\n"],"names":["shared"],"rangeMappings":";;","mappings":"AAAA,OAAO,SAASA;IACd,OAAO;AACT"}

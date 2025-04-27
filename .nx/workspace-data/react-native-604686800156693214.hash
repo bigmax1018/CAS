@@ -1,0 +1,104 @@
+{
+  "targetsCache": {
+    "14238702012536475986": {
+      "start": {
+        "command": "react-native start",
+        "options": {
+          "cwd": "apps/mobile"
+        }
+      },
+      "pod-install": {
+        "command": "pod install",
+        "options": {
+          "cwd": "apps/mobile/ios"
+        },
+        "dependsOn": [
+          "sync-deps"
+        ]
+      },
+      "run-ios": {
+        "command": "react-native run-ios",
+        "options": {
+          "cwd": "apps/mobile"
+        }
+      },
+      "run-android": {
+        "command": "react-native run-android",
+        "options": {
+          "cwd": "apps/mobile"
+        }
+      },
+      "build-ios": {
+        "command": "react-native build-ios",
+        "options": {
+          "cwd": "apps/mobile"
+        },
+        "cache": true,
+        "dependsOn": [
+          "^build-ios"
+        ],
+        "inputs": [
+          "default",
+          "^production",
+          {
+            "externalDependencies": [
+              "react-native"
+            ]
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}/apps/mobile/ios/build/Build/Products"
+        ]
+      },
+      "build-android": {
+        "command": "react-native build-android",
+        "options": {
+          "cwd": "apps/mobile"
+        },
+        "cache": true,
+        "dependsOn": [
+          "^build-android"
+        ],
+        "inputs": [
+          "default",
+          "^production",
+          {
+            "externalDependencies": [
+              "react-native"
+            ]
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}/apps/mobile/android/app/build/outputs"
+        ]
+      },
+      "bundle": {
+        "command": "react-native bundle",
+        "options": {
+          "cwd": "apps/mobile"
+        },
+        "dependsOn": [
+          "^bundle"
+        ],
+        "inputs": [
+          "default",
+          "^production",
+          {
+            "externalDependencies": [
+              "react-native"
+            ]
+          }
+        ]
+      },
+      "sync-deps": {
+        "executor": "@nx/react-native:sync-deps"
+      },
+      "update": {
+        "command": "react-native upgrade",
+        "options": {
+          "cwd": "apps/mobile"
+        }
+      }
+    }
+  }
+}

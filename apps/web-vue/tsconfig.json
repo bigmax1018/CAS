@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "esnext",           // Recommended for Vite
+    "module": "esnext",           // Use "esnext" (better for Vite than "es2020")
+    "moduleResolution": "node",   // Required for path aliases
+    "baseUrl": ".",               // Base directory for paths
+    "strict": true,               // Recommended for TypeScript
+    "esModuleInterop": true,      // Improves compatibility
+    "skipLibCheck": true,         // Optional but reduces unnecessary checks
+    "forceConsistentCasingInFileNames": true, // Avoids case-sensitivity issues
+    "types": ["vite/client", "node"],     
+    "paths": {
+      "@shared/*": ["./shared/*"],
+      "@web-vue/*": ["./web-vue/src/*"],
+      "@mobile-react/*": ["./mobile-react/src/*"]
+    }
+  },
+  "include": [
+    "server/**/*",
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.vue",
+    "shared/**/*.ts",             // Include shared files
+    "web-vue/src/**/*.vue",       // Include Vue files
+    "mobile-react/src/**/*.tsx",   // Include React files (if applicable)
+    "node_modules/.prisma/client/index.d.ts"
+  ],
+}

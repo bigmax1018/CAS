@@ -1,0 +1,23 @@
+# k8s/feature-flags.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: feature-flags
+data:
+  default.json: |
+    {
+      "features": {
+        "new-trading-algo": {
+          "enabled": false,
+          "strategies": [
+            {
+              "name": "gradualRollout",
+              "parameters": {
+                "percentage": "30",
+                "groupId": "beta-users"
+              }
+            }
+          ]
+        }
+      }
+    }

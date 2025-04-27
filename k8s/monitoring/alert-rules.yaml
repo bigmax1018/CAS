@@ -1,0 +1,21 @@
+# k8s/monitoring/alert-rules.yaml
+groups:
+- name: trading-platform
+  rules:
+  - alert: HighErrorRate
+    expr: rate(http_requests_total{status=~"5.."}[1m]) / rate(http_requests_total[1m]) > 0.05
+    for: 5m
+    labels:
+      severity: critical
+    annotations:
+      summary: "High error rate on {{ $labels.instance }}"
+      description: "Error rate is {{ $value }}"
+
+  - alert: MLWorkerDown
+    expr: up{job="ml-worker"} == 0
+    for: 2m
+    labels:
+      severity: critical
+    annotations:
+      summary: "ML Worker down"
+      description: "gRPC service not responding"
